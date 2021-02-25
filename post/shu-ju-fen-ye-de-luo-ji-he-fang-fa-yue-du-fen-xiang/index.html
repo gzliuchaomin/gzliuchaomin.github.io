@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta name="referrer" content="never">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="kveln">
+  <title>数据分页的逻辑和方法 - 阅读分享 | 惊躁</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="http://shatle.gitee.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+  <!--  <link href="http://shatle.gitee.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link rel="alternate" type="application/rss+xml" title="数据分页的逻辑和方法 - 阅读分享 | 惊躁 » Feed" href="http://shatle.gitee.io/atom.xml">
+  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+  <link href="http://shatle.gitee.io/styles/main.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+  <!-- <script src="http://shatle.gitee.io/media/scripts/jquery.min.js"></script> -->
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+    <meta property="og:description" content="数据分页的逻辑和方法 - 阅读分享"/>
+    <meta property="og:url" content="http://shatle.gitee.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/"/>
+    <meta property="og:locale" content="zh-CN"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:site_name" content="惊躁"/>
+  </head>
+  <body>
+  	<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="http://shatle.gitee.io">惊躁</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/">首页</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/archives">归档</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/tags">标签</a>
+              
+          </li>
+          
+          <li class="nav-item">
+              
+              <a class="nav-link" href="/post/about">关于</a>
+              
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('http://shatle.gitee.io/media/images/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+          	<span class="tags">
+          	 
+        </span>
+            <h1>数据分页的逻辑和方法 - 阅读分享</h1>
+            <span class="meta">
+            	Posted on
+              2020-08-16，6 min read
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <blockquote>
+<p>同事在使用 ElasticSearch 做全文搜索时，讨论到一个深度分页的问题，及现在购物网站的搜索结果，一般不超过100页的现象。借此，分析一个数据库对分页的设计与痛点。</p>
+</blockquote>
+<h4 id="limit-和-offset">LIMIT 和  OFFSET</h4>
+<p>现在，MySQL是很多系统使用的关系型数据库，普通分页的SQL代码会是</p>
+<pre><code>SELECT * FROM users LIMIT 10 OFFSET 51
+</code></pre>
+<p>这样子，可以查询得到第6页、每页10条的数据。</p>
+<p>分页，普遍使用的是 LIMIT 和 OFFSET 来查询数据库数据的。比如，will_paginate 插件也是使用这一方法来生成分页的SQL语句的。</p>
+<blockquote>
+<p>This library was designed around the concepts of SQL LIMIT + OFFSET (to fetch a single page's worth of results), SQL COUNT (to calculate the total number of pages)</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1598759020289.gif" alt="" loading="lazy"></figure>
+<p>查询逻辑，对整个表进行逐行的偏移计算，当到达 OFFSET 的 50 条记录时，就会将后续的10条记录读取出来。Innodb引擎下的MySQL, OFFSET 查找时会通过B+树叶子结点的链表进行逐个跳转。</p>
+<p>这个就相当于全表扫描。对于数据量少的系统来说，通过这样子的查询是没有问题的。但是数据量很大时，问题就是出现。</p>
+<p>比如，表中有一百万个用户，OFFSET是 50 万，LIMIT 是 10。</p>
+<pre><code>SELECT * FROM users LIMIT 10 OFFSET 500000
+</code></pre>
+<p>在没有查询条件的情况下，数据库需要先扫描前 50 万条的记录，再获取之后的 10 条记录的具体内容。这在逻辑上是合理的，但是耗时的。</p>
+<hr>
+<p>那分页有什么优化方法吗？</p>
+<ul>
+<li>增加硬件</li>
+<li>避免全表扫描</li>
+</ul>
+<p>增加硬件显然不是很好的方案，因为数据会增加，不断地增加硬件会增加系统的运营成本。<br>
+那么，需要做的是避免数据库的全表扫描操作。</p>
+<p><strong>cursor-based pagination</strong></p>
+<p>基于游标的分页方式，就是利用数据库的B+树索引，而不是通过叶子的节点的逐个扫描，才得到偏移位。具体的查询为</p>
+<pre><code>SELECT * FROM users LIMIT 10 OFFSET 85001;
+
+SELECT * FROM users WHERE id &gt; 85000 LIMIT 10;
+</code></pre>
+<p>在正常的ID自增无删除的情况下，上方的查询语句是等价的。网上有相关的测试工具，</p>
+<blockquote>
+<p>https://www.db-fiddle.com/f/3JSpBxVgcqL3W2AzfRNCyq/1</p>
+</blockquote>
+<p>查询的耗时，第一个是 25ms，第二个不到 1ms。区别巨大的查询耗时，就是后者使用了游标分页查询(cursor-based pagination)。后者通过准确的告知数据库，读取的数据 id 是大于 85000 的，其中 id 是主键，是有索引的，可以通过索引快速定位开始的位置。然后，再读取后续的10条数据记录。</p>
+<hr>
+<p>那么，在前端页面上怎么去使用这一查询方法呢？</p>
+<p>通常，页面的分页链接地址，是 <code>/query?page=1&amp;limit=10</code>。<br>
+为了应用游标分页方法，前端需要将ID的值传递到后端，用来进行比较处理，<br>
+所以，映射的地址需要调整为 <code>/query?limit=10&amp;id=1234</code>，需要传递游标的值到后端：</p>
+<pre><code>SELECT * FROM users WHERE id &gt; 1234 ORDER BY id DESC LIMIT 10
+</code></pre>
+<p>虽然基于游标的查询方式，提升了很大的速度；但在实际的场景使用时，会遇到些问题：</p>
+<p>一般来说，页面上的分页显示为</p>
+<pre><code>[首页] ... [上一页] 12 [下一页] ... [最后一页]
+</code></pre>
+<p>生成相应链接的SQL会为</p>
+<pre><code>&lt;!-- 首页 --&gt;
+URL: ?id=FIRST&amp;limit=10
+SQL: SELECT * FROM users WHERE ... ORDER BY ID ASC LIMIT 10
+
+&lt;!-- 上一页 --&gt;
+URL: ?id=ID&amp;limit=10
+SQL: ?
+
+&lt;!-- 12页 --&gt;
+URL: ?id=ID&amp;limit=10
+SQL: ?
+
+&lt;!-- 下一页 --&gt;
+URL: ?id=ID&amp;limit=10
+SQL: ?
+
+&lt;!-- 最后一页 --&gt;
+URL: ?id=LAST&amp;limit=10
+SQL: SELECT * FROM users WHERE ... ORDER BY ID DESC LIMIT 10
+</code></pre>
+<p>第一页和最后一页，都可以通过相反的排序来快速得到；</p>
+<p>但，上面的代码中有问题，就是中间的三个链接地址，只有ID一个变量，其它是一样的。<br>
+并不能直观地看出，这个链接指向的是哪一页。</p>
+<pre><code>&lt;!-- 12页 --&gt;
+URL: ?page=12&amp;id=ID&amp;limit=10
+SQL: ?
+</code></pre>
+<p>在链接地址上添加上 page 参数，可以让前端直接了解到是哪页数据，</p>
+<p>但后端并不是使用 page 参数进行分页的，是使用ID进行游标判断。<br>
+那，这个链接会有问题是：后端怎么知道这连接是当前、上一页、下一页？</p>
+<p>本质上说，需要让后端知道，使用哪个比较符号：&gt; 或者 &lt;</p>
+<p>方法一，增加参数表示方向</p>
+<pre><code>&lt;!-- 上一页 --&gt;
+URL: ?page=11&amp;id=111&amp;limit=10&amp;drt=left
+SQL: SELECT * FROM users WHERE id&lt;111 ORDER BY ID ASC LIMIT 10
+
+&lt;!-- 12页 --&gt;
+URL: ?page=12&amp;id=111&amp;limit=10
+SQL: SELECT * FROM users WHERE id&gt;=ID ORDER BY ID ASC LIMIT 10
+
+&lt;!-- 下一页 --&gt;
+URL: ?page=13&amp;id=120&amp;limit=10&amp;drt=right
+SQL: SELECT * FROM users WHERE id&gt;ID ORDER BY ID ASC LIMIT 10
+</code></pre>
+<p>假如，id有序递增，那么第12页的id序列为 111-120。<br>
+当加载好当前页时，可以将第一个ID: 111 传递给上一页，将最后一个ID: 120 传递给下一页；</p>
+<p>考虑到数据的增删，所以每一个当前、上一页、下一页，都是需要在每次请求时刷新的。</p>
+<p>很显然，上面的方法是基于一个唯一有序的、建立有索引的字段才能使用的方法，实践中的场景很少能应用到这方法。</p>
+<pre><code>参考链接
+
+https://ivopereira.net/content/efficient-pagination-dont-use-offset-limit
+http://mysql.rjweb.org/doc.php/pagination
+http://mysql.rjweb.org/doc.php/lists
+</code></pre>
+
+          
+          <p class="next-post">下一篇：
+            <a href="http://shatle.gitee.io/post/ren-shi-sketch/">
+              <span class="post-title">
+                认识 Sketch&rarr;
+              </span>
+            </a>
+          </p>
+        
+        <div class="comment">
+          
+        </div>
+      </div>
+    </div>
+  </article>
+ <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+              <li class="list-inline-item">
+              <a href="http://shatle.gitee.io/atom.xml" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy;<span>惊躁</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
+        </div>
+      </div>
+    </div>
+   </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="http://shatle.gitee.io/media/scripts/bootstrap.bundle.min.js"></script> -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
+  <!-- <script src="http://shatle.gitee.io/media/scripts/clean-blog.min.js"></script> -->
+  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
+<a id="back_to_top" href="#" class="back_to_top">
+  <span>▲</span></a>
+<script>$(document).ready((function(_this) {
+    return function() {
+      var bt;
+      bt = $('#back_to_top');
+      if ($(document).width() > 480) {
+        $(window).scroll(function() {
+          var st;
+          st = $(window).scrollTop();
+          if (st > 30) {
+            return bt.css('display', 'block')
+          } else {
+            return bt.css('display', 'none')
+          }
+        });
+        return bt.click(function() {
+          $('body,html').animate({
+            scrollTop: 0
+          },
+          800);
+          return false
+        })
+      }
+    }
+  })(this));</script>
+  </body>
+</html>
+
