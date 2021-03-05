@@ -1,105 +1,98 @@
-<!DOCTYPE html>
 <html>
   <head>
-      <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta content="yes" name="apple-mobile-web-app-capable" />
-  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
-  <meta name="referrer" content="never">
-  <meta name="keywords" content="">
-  <meta name="description" content="">
-  <meta name="author" content="kveln">
-  <title>认识 Sketch | 惊躁</title>
-  <link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-  <!-- <link href="http://shatle.gitee.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
-  <!--  <link href="http://shatle.gitee.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
-  <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-  <link rel="alternate" type="application/rss+xml" title="认识 Sketch | 惊躁 » Feed" href="http://shatle.gitee.io/atom.xml">
-  <link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
-  <link href="http://shatle.gitee.io/styles/main.css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
-  <!-- <script src="http://shatle.gitee.io/media/scripts/jquery.min.js"></script> -->
-  <script>hljs.initHighlightingOnLoad();</script>
-  
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+<meta name="referrer" content="never">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="kveln">
+<title>认识 Sketch | 惊躁</title>
+<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="http://gzliuchaomin.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
+<!--  <link href="http://gzliuchaomin.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="alternate" type="application/rss+xml" title="认识 Sketch | 惊躁 » Feed" href="http://gzliuchaomin.github.io/atom.xml">
+<link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
+<link href="http://gzliuchaomin.github.io/styles/main.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
+<!-- <script src="http://gzliuchaomin.github.io/media/scripts/jquery.min.js"></script> -->
+<script>hljs.initHighlightingOnLoad();</script>
 
-    <meta property="og:description" content="认识 Sketch"/>
-    <meta property="og:url" content="http://shatle.gitee.io/post/ren-shi-sketch/"/>
-    <meta property="og:locale" content="zh-CN"/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="惊躁"/>
+
+    <script src="/media/scripts/index.js"></script>
   </head>
   <body>
-  	<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand" href="http://shatle.gitee.io">惊躁</a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          
-          <li class="nav-item">
-              
-              <a class="nav-link" href="/">首页</a>
-              
-          </li>
-          
-          <li class="nav-item">
-              
-              <a class="nav-link" href="/archives">归档</a>
-              
-          </li>
-          
-          <li class="nav-item">
-              
-              <a class="nav-link" href="/tags">标签</a>
-              
-          </li>
-          
-          <li class="nav-item">
-              
-              <a class="nav-link" href="/post/about">关于</a>
-              
-          </li>
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('http://shatle.gitee.io/media/images/home-bg.jpg')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="post-heading">
-          	<span class="tags">
-          	 
-            <a href="http://shatle.gitee.io/tag/EnOflh3-Uv/" class="tag">sketch</a>
+    <div class="main">
+      <div class="main-content post-detail-page" id="detailTop">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="http://gzliuchaomin.github.io">惊躁</a>
+    <div id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
             
-        </span>
-            <h1>认识 Sketch</h1>
-            <span class="meta">
-            	Posted on
-              2020-08-09，3 min read
-            </span>
-          </div>
-        </div>
-      </div>
+            <a class="nav-link" href="/">文章</a>
+            
+        </li>
+        
+        <li class="nav-item">
+            
+            <a class="nav-link" href="/archives">归档</a>
+            
+        </li>
+        
+        <li class="nav-item">
+            
+            <a class="nav-link" href="/tags">标签</a>
+            
+        </li>
+        
+        <li class="nav-item">
+            
+            <a class="nav-link" href="/post/about">关于</a>
+            
+        </li>
+        
+      </ul>
     </div>
-  </header>
+  </div>
+</nav>
 
-  <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p>程序员，在编写开发技术方案时，或多或少都会需要绘制流程图。</p>
+        
+          <div class="post-feature-image has-feature-image" style="background-image: url('http://gzliuchaomin.github.io/post-images/ren-shi-sketch.jpg');">
+          </div>
+        
+        
+
+        <div id="postFixedNavs">
+
+          <a href="#detailTop" class="post-nav-item to-top">返回顶部</a>
+        </div>
+      
+        <div id="postContainer" class="post-detail">
+          <article class="post container">
+            <div class="post-title">
+              认识 Sketch
+            </div>
+            <div class="post-info">
+              <time class="post-time">
+                · 2020-08-09 ·
+              </time>
+              
+                <a href="http://gzliuchaomin.github.io/tag/EnOflh3-Uv/" class="post-tags">
+                  # sketch
+                </a>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>程序员，在编写开发技术方案时，或多或少都会需要绘制流程图。</p>
 <p>我读书时一直使用的是Visio，电脑是Windows，工具也很巨硬的，很合理。我使用 Visio，只是会用基本的画框、连线的功能，最终形成一个业务或者算法的流程图。工作之后，换了电脑使用的是 Macbook，所以换成了 OmniGraffle，但使用需求并没有多大的变化，依然是画UML图。无论是Visio，或者是 OmniGraffle，都会有比较多的内置图形库，方便制作UML图。</p>
 <p>最近，猎到一个技术博主 https://draveness.me/ ，他的技术学习生活很丰富，羡慕这种有空闲时间学习的工作。他的文章内容很好，其中的配图也比较暖和好看。他还专门为画图工具写了一篇文章，讲述了他的工具使用历程。美好的配图，是可以让人更加舒的，但也是需要学习和时间成本的。</p>
 <blockquote>
@@ -112,94 +105,60 @@
 <p>最近，打算慢慢拾起多年写文章的习惯，即便是流水帐，也是可以的。文章，首先的对象是自己，先满足自己吐槽的痛点，再来满足他人的阅感吧。</p>
 <p>工具，好的工具，应该是有好的扩展性的，就是别人可以通过编码的方式，引入各种方便工作的功能。所以，我下安装好 Sketch 之后，看到有“插件”的菜单栏时，先在网上探索到了个很好的相关网站 https://oursketch.com/。</p>
 <p>outsketch中有很多插件，包括有 Measure 等。其中，令人惊喜的是，蚂蚁金服推出了 Kitchen 的插件，包括了 AntDesign 的整套组件，虽然没有试用，但看到介绍真是令人兴奋。蚂蚁金服出现了一系列提高工作效率的工具，为自己企业和整个行业都做出了很好的表率作用。</p>
-<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1596978624042.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1596978624042.png" alt="" loading="lazy"></figure>
 <p>除了Kitchen之外，我还安装了 Arrows、Measure 等。Measure 是设计人员输出给开发人员的，我暂时是不需要的，但生成人名、Nearest8感觉还是很好玩的。</p>
 <p>下一步，形成自己的些流程图的库，方便自己写方案和文章的素材，希望自己走起来。我已经躺下很久了。</p>
 
-          
-          <p class="next-post">下一篇：
-            <a href="http://shatle.gitee.io/post/about-blog/">
-              <span class="post-title">
-                关于博客&rarr;
-              </span>
-            </a>
-          </p>
+            </div>
+          </article>
+        </div>
+    
         
-        <div class="comment">
-          
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="http://gzliuchaomin.github.io/post/about-blog/">
+              <h3 class="post-title">
+                关于博客
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+    
+        <div class="site-footer">
+  <div class="container">
+    <!-- Powered by <a href="https://github.com/shatle" target="_blank">Shatle</a> -->
+    <div class="foot-box foot-box-1">
+      <div class="foot-box-title">联系我</div>
+
+      <div class="foot-box-content">
+        <br>
+        <p>邮箱：zhangxiaoxin63@qq.com</p>
+        <p>微信：-xxzhang-</p>
+        <br>
+        <p>Copyright @ 2021 xiaoxin zhang</p>
+      </div>
+    </div>
+
+    <div class="foot-box foot-box-2">
+      <div class="foot-box-title">快捷链接</div>
+
+      <div class="foot-box-content">
+        <div class="qr-code-box">
+          <div class="qr-code-img" style="background-image: url('/media/images/qr-code.jpg');"></div>
+          <div class="qr-code-tip">扫描添加我微信</div>
         </div>
       </div>
     </div>
-  </article>
- <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-            
-              
-              <li class="list-inline-item">
-              <a href="http://shatle.gitee.io/atom.xml" target="_blank">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-              </li>
-          </ul>
-          <p class="copyright text-muted">Copyright &copy;<span>惊躁</span><br><a href="https://github.com/getgridea/gridea" class="Themeinfo">Powered by Gridea</a></p>
-        </div>
+  </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
       </div>
     </div>
-   </footer>
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-  <!-- <script src="http://shatle.gitee.io/media/scripts/bootstrap.bundle.min.js"></script> -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://cdn.jsdelivr.net/gh/Alanrk/clean-cdn@1.0/scripts/clean-blog.min.js"></script>
-  <!-- <script src="http://shatle.gitee.io/media/scripts/clean-blog.min.js"></script> -->
-  <script src="//instant.page/3.0.0" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-  <style type="text/css">a.back_to_top{text-decoration:none;position:fixed;bottom:40px;right:30px;background:#f0f0f0;height:40px;width:40px;border-radius:50%;line-height:36px;font-size:18px;text-align:center;transition-duration:.5s;transition-propety:background-color;display:none}a.back_to_top span{color:#888}a.back_to_top:hover{cursor:pointer;background:#dfdfdf}a.back_to_top:hover span{color:#555}@media print,screen and(max-width:580px){.back_to_top{display:none!important}}</style>
-<a id="back_to_top" href="#" class="back_to_top">
-  <span>▲</span></a>
-<script>$(document).ready((function(_this) {
-    return function() {
-      var bt;
-      bt = $('#back_to_top');
-      if ($(document).width() > 480) {
-        $(window).scroll(function() {
-          var st;
-          st = $(window).scrollTop();
-          if (st > 30) {
-            return bt.css('display', 'block')
-          } else {
-            return bt.css('display', 'none')
-          }
-        });
-        return bt.click(function() {
-          $('body,html').animate({
-            scrollTop: 0
-          },
-          800);
-          return false
-        })
-      }
-    }
-  })(this));</script>
   </body>
 </html>
-

@@ -1,23 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://shatle.gitee.io</id>
+    <id>http://gzliuchaomin.github.io</id>
     <title>惊躁</title>
-    <updated>2021-02-25T16:21:48.154Z</updated>
+    <updated>2021-03-05T13:25:07.007Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://shatle.gitee.io"/>
-    <link rel="self" href="http://shatle.gitee.io/atom.xml"/>
+    <link rel="alternate" href="http://gzliuchaomin.github.io"/>
+    <link rel="self" href="http://gzliuchaomin.github.io/atom.xml"/>
     <subtitle>惊躁中，平静下来吧</subtitle>
-    <logo>http://shatle.gitee.io/images/avatar.png</logo>
-    <icon>http://shatle.gitee.io/favicon.ico</icon>
+    <logo>http://gzliuchaomin.github.io/images/avatar.png</logo>
+    <icon>http://gzliuchaomin.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 惊躁</rights>
     <entry>
+        <title type="html"><![CDATA[Gridea 与 github 配置快速指引]]></title>
+        <id>http://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/</id>
+        <link href="http://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">
+        </link>
+        <updated>2021-03-05T13:07:51.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="下载-gridea">下载 gridea</h2>
+<p>首先，https://github.com/getgridea/gridea 下载 gridea</p>
+<p>gridea 是 markdown 编辑器，语法可了解</p>
+<p>https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax<br>
+https://chiperman.github.io/post/markdown-example/</p>
+<h2 id="认识-gridea">认识 gridea</h2>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1614950102558.jpg" alt="" loading="lazy"></figure>
+<h2 id="配置-gridea-以同步到github">配置 gridea ，以同步到github</h2>
+<figure data-type="image" tabindex="2"><img src="http://gzliuchaomin.github.io/post-images/1614950199776.jpg" alt="" loading="lazy"></figure>
+<p>其中，domain/ Repository Name/ Branch Name/ Branch Username  按照 github 的实际项目填写</p>
+<figure data-type="image" tabindex="3"><img src="http://gzliuchaomin.github.io/post-images/1614950464407.jpg" alt="" loading="lazy"></figure>
+<p>Token 通过如下步骤从 github 获取</p>
+<figure data-type="image" tabindex="4"><img src="http://gzliuchaomin.github.io/post-images/1614950379650.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="http://gzliuchaomin.github.io/post-images/1614950390335.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="http://gzliuchaomin.github.io/post-images/1614950403323.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="http://gzliuchaomin.github.io/post-images/1614950419486.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="http://gzliuchaomin.github.io/post-images/1614950429356.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="http://gzliuchaomin.github.io/post-images/1614950437613.jpg" alt="" loading="lazy"></figure>
+<p>复制token 到 gridea 中，点击 Test Connection</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[故事线主视频]]></title>
+        <id>http://gzliuchaomin.github.io/post/gu-shi-xian-zhu-shi-pin/</id>
+        <link href="http://gzliuchaomin.github.io/post/gu-shi-xian-zhu-shi-pin/">
+        </link>
+        <updated>2021-02-28T09:18:57.000Z</updated>
+        <content type="html"><![CDATA[<p>故事线：指的是给用户提供贴合业务及行业场景的脚本，帮助用户轻松完成视频制作。新增故事线脚本功能，让用户有更加清晰的场景化构建视频概念，从而引导用户快速生成视频结果。</p>
+<div class="post-meta" style="display: flex;padding: 20px;margin-bottom:20px;border-bottom: 1px solid #d8d8d8;">
+   <style>.post-meta-box{ flex: 1;}</style>
+    <div class="post-meta-box post-meta-role">
+    <strong>My role</strong>
+    <span>产品经理、交互设计</span>
+    </div>
+    <div class="post-meta-box post-meta-timeline">
+    <strong>Timeline</strong>
+    <span>产品经理、交互设计</span>
+    </div>
+    <div class="post-meta-box post-meta-link-view">
+    <a style="border: 1px solid #8189FF; padding: 4px 20px;" href="http://www.baidu.com" class="btn">浏览线上网页</a>
+    </div>
+</div>
+<h2 style="color: red">红色标题2</h2>
+<h2 id="问题定位">问题定位</h2>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1614504220498.png" alt="" loading="lazy"></figure>
+<p>在这次的框架设计中，我把模板分拆成按照脚本展示的布局，改变之前单一的“仅展示模板名称”的布局架构，打造出具有更清晰“叙事脉络”的页面布局。在新的故事线界面上用户可以看到清晰的视频模板结构，并且能看到不同模板的差异化内容。</p>
+<figure data-type="image" tabindex="2"><img src="http://gzliuchaomin.github.io/post-images/1614504239106.png" alt="" loading="lazy"></figure>
+<h2 id="确认目标">确认目标</h2>
+<h2 id=""></h2>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[既得利益者的快乐]]></title>
-        <id>http://shatle.gitee.io/post/ji-de-li-yi-zhe-de-kuai-le/</id>
-        <link href="http://shatle.gitee.io/post/ji-de-li-yi-zhe-de-kuai-le/">
+        <id>http://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/</id>
+        <link href="http://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/">
         </link>
         <updated>2020-11-08T13:22:49.000Z</updated>
         <content type="html"><![CDATA[<p>今天看了 基努·里维斯 主演的《Replicas》-- 克隆人。</p>
-<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1604846342083.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1604846342083.jpg" alt="" loading="lazy"></figure>
 <p>电影是2018年上影的，但是我当时并没有看。在今天看完电影之后，搜索了当时的上影时的情况，票房并不好，影院给予的排片很少，估计原因是电影主题对克隆人的观点过于挑战世俗了吧。</p>
 <p>大致说一下电影的梗概，毕竟现在网上已经有片源的，不会存在剧透的问题。</p>
 <p>作为科学家的主角，在一家生物公司当主管，负责的项目是对人类意识上的克隆。画面的开始是对一位受伤的士兵进行意识的移植，移植到一个机器躯体上。当然，结果是失败的。士兵的意识移植到了躯体中，士兵能说话，但对现状表现出的狂暴的情绪。注意，这些的狂暴情绪，至少有两种可能：一，士兵对机器人的现状并不接受，或许士兵信仰是自然的生老病死；二、科学家对宿主意识没有进行很好的移植，比如情绪控制部分没有很好地处理。总之，这345号机器躯体的移植是失败的。</p>
@@ -37,8 +94,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[数据分页的逻辑和方法 - 阅读分享]]></title>
-        <id>http://shatle.gitee.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/</id>
-        <link href="http://shatle.gitee.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/">
+        <id>http://gzliuchaomin.github.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/</id>
+        <link href="http://gzliuchaomin.github.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/">
         </link>
         <updated>2020-08-16T07:20:24.000Z</updated>
         <content type="html"><![CDATA[<blockquote>
@@ -53,7 +110,7 @@
 <blockquote>
 <p>This library was designed around the concepts of SQL LIMIT + OFFSET (to fetch a single page's worth of results), SQL COUNT (to calculate the total number of pages)</p>
 </blockquote>
-<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1598759020289.gif" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1598759020289.gif" alt="" loading="lazy"></figure>
 <p>查询逻辑，对整个表进行逐行的偏移计算，当到达 OFFSET 的 50 条记录时，就会将后续的10条记录读取出来。Innodb引擎下的MySQL, OFFSET 查找时会通过B+树叶子结点的链表进行逐个跳转。</p>
 <p>这个就相当于全表扫描。对于数据量少的系统来说，通过这样子的查询是没有问题的。但是数据量很大时，问题就是出现。</p>
 <p>比如，表中有一百万个用户，OFFSET是 50 万，LIMIT 是 10。</p>
@@ -149,8 +206,8 @@ http://mysql.rjweb.org/doc.php/lists
     </entry>
     <entry>
         <title type="html"><![CDATA[认识 Sketch]]></title>
-        <id>http://shatle.gitee.io/post/ren-shi-sketch/</id>
-        <link href="http://shatle.gitee.io/post/ren-shi-sketch/">
+        <id>http://gzliuchaomin.github.io/post/ren-shi-sketch/</id>
+        <link href="http://gzliuchaomin.github.io/post/ren-shi-sketch/">
         </link>
         <updated>2020-08-09T13:09:02.000Z</updated>
         <content type="html"><![CDATA[<p>程序员，在编写开发技术方案时，或多或少都会需要绘制流程图。</p>
@@ -166,19 +223,19 @@ http://mysql.rjweb.org/doc.php/lists
 <p>最近，打算慢慢拾起多年写文章的习惯，即便是流水帐，也是可以的。文章，首先的对象是自己，先满足自己吐槽的痛点，再来满足他人的阅感吧。</p>
 <p>工具，好的工具，应该是有好的扩展性的，就是别人可以通过编码的方式，引入各种方便工作的功能。所以，我下安装好 Sketch 之后，看到有“插件”的菜单栏时，先在网上探索到了个很好的相关网站 https://oursketch.com/。</p>
 <p>outsketch中有很多插件，包括有 Measure 等。其中，令人惊喜的是，蚂蚁金服推出了 Kitchen 的插件，包括了 AntDesign 的整套组件，虽然没有试用，但看到介绍真是令人兴奋。蚂蚁金服出现了一系列提高工作效率的工具，为自己企业和整个行业都做出了很好的表率作用。</p>
-<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1596978624042.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1596978624042.png" alt="" loading="lazy"></figure>
 <p>除了Kitchen之外，我还安装了 Arrows、Measure 等。Measure 是设计人员输出给开发人员的，我暂时是不需要的，但生成人名、Nearest8感觉还是很好玩的。</p>
 <p>下一步，形成自己的些流程图的库，方便自己写方案和文章的素材，希望自己走起来。我已经躺下很久了。</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[关于博客]]></title>
-        <id>http://shatle.gitee.io/post/about-blog/</id>
-        <link href="http://shatle.gitee.io/post/about-blog/">
+        <id>http://gzliuchaomin.github.io/post/about-blog/</id>
+        <link href="http://gzliuchaomin.github.io/post/about-blog/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<p>前些天，坚持多年的古仔停更了他的博客，现在博客存在的价值似乎正在慢慢变弱。手机，作为当今人们出门必备的也是最重要的物件，正在逐渐占满了人们的眼睛。</p>
-<figure data-type="image" tabindex="1"><img src="http://shatle.gitee.io/post-images/1596855389478.JPG" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="http://gzliuchaomin.github.io/post-images/1596855389478.JPG" alt="" loading="lazy"></figure>
 <p>抖音，一个娱乐到死的手机APP，常期霸榜各大应用商店。我下载过一次，当晚连续刷到了晚上11点左右，才不舍得去洗澡。上面有各类人群发布上去的视频，或是真实，或是演戏，但终究还是吸引眼球的。这一过程，我不用思考，忘记的烦恼，也忘记了时间。于是，我卸载了。</p>
 <p>公众号，很多人都开了公众号，膀上微信这个大平台，可以让自己的文章更容易被其它人所熟知。相比，个人博客做SEO，公众号的推广似乎会更加简单些，可以分享到个人、群里。手机，收割着大家的碎片时间；公众号，通过手机微信，也会分享到这些碎片时间。公众号，也是个不错的选择，何必纠结于自己的搭建的博客网站呢？</p>
 <p>好，此博客停了!!!</p>
