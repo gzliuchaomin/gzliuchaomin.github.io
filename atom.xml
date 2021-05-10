@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gzliuchaomin.github.io</id>
     <title>惊躁</title>
-    <updated>2021-03-06T03:31:40.957Z</updated>
+    <updated>2021-05-10T00:42:08.644Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gzliuchaomin.github.io"/>
     <link rel="self" href="https://gzliuchaomin.github.io/atom.xml"/>
@@ -16,14 +16,14 @@
         <link href="https://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">
         </link>
         <updated>2021-03-05T13:07:51.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="下载-gridea">下载 gridea</h2>
+        <content type="html"><![CDATA[<h2 id="下载gridea">下载gridea</h2>
 <p>首先，https://github.com/getgridea/gridea 下载 gridea</p>
 <p>gridea 是 markdown 编辑器，语法可了解</p>
 <p>https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax<br>
 https://chiperman.github.io/post/markdown-example/</p>
-<h2 id="认识-gridea">认识 gridea</h2>
+<h2 id="认识gridea">认识gridea</h2>
 <figure data-type="image" tabindex="1"><img src="https://gzliuchaomin.github.io/post-images/1614950102558.jpg" alt="" loading="lazy"></figure>
-<h2 id="配置-gridea-以同步到github">配置 gridea ，以同步到github</h2>
+<h2 id="配置gridea以同步到github">配置gridea，以同步到github</h2>
 <figure data-type="image" tabindex="2"><img src="https://gzliuchaomin.github.io/post-images/1614950199776.jpg" alt="" loading="lazy"></figure>
 <p>其中，domain/ Repository Name/ Branch Name/ Branch Username  按照 github 的实际项目填写</p>
 <p>domain 需要 https</p>
@@ -37,36 +37,6 @@ https://chiperman.github.io/post/markdown-example/</p>
 <figure data-type="image" tabindex="8"><img src="https://gzliuchaomin.github.io/post-images/1614950429356.jpg" alt="" loading="lazy"></figure>
 <figure data-type="image" tabindex="9"><img src="https://gzliuchaomin.github.io/post-images/1614950437613.jpg" alt="" loading="lazy"></figure>
 <p>复制token 到 gridea 中，点击 Test Connection</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[故事线主视频]]></title>
-        <id>https://gzliuchaomin.github.io/post/gu-shi-xian-zhu-shi-pin/</id>
-        <link href="https://gzliuchaomin.github.io/post/gu-shi-xian-zhu-shi-pin/">
-        </link>
-        <updated>2021-02-28T09:18:57.000Z</updated>
-        <content type="html"><![CDATA[<p>故事线：指的是给用户提供贴合业务及行业场景的脚本，帮助用户轻松完成视频制作。新增故事线脚本功能，让用户有更加清晰的场景化构建视频概念，从而引导用户快速生成视频结果。</p>
-<div class="post-meta" style="display: flex;padding: 20px;margin-bottom:20px;border-bottom: 1px solid #d8d8d8;">
-   <style>.post-meta-box{ flex: 1;}</style>
-    <div class="post-meta-box post-meta-role">
-    <strong>My role</strong>
-    <span>产品经理、交互设计</span>
-    </div>
-    <div class="post-meta-box post-meta-timeline">
-    <strong>Timeline</strong>
-    <span>产品经理、交互设计</span>
-    </div>
-    <div class="post-meta-box post-meta-link-view">
-    <a style="border: 1px solid #8189FF; padding: 4px 20px;" href="http://www.baidu.com" class="btn">浏览线上网页</a>
-    </div>
-</div>
-<h2 style="color: red">红色标题2</h2>
-<h2 id="问题定位">问题定位</h2>
-<figure data-type="image" tabindex="1"><img src="https://gzliuchaomin.github.io/post-images/1614504220498.png" alt="" loading="lazy"></figure>
-<p>在这次的框架设计中，我把模板分拆成按照脚本展示的布局，改变之前单一的“仅展示模板名称”的布局架构，打造出具有更清晰“叙事脉络”的页面布局。在新的故事线界面上用户可以看到清晰的视频模板结构，并且能看到不同模板的差异化内容。</p>
-<figure data-type="image" tabindex="2"><img src="https://gzliuchaomin.github.io/post-images/1614504239106.png" alt="" loading="lazy"></figure>
-<h2 id="确认目标">确认目标</h2>
-<h2 id=""></h2>
 ]]></content>
     </entry>
     <entry>

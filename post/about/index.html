@@ -1,138 +1,322 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta content="yes" name="apple-mobile-web-app-capable" />
-<meta content="black" name="apple-mobile-web-app-status-bar-style" />
-<meta name="referrer" content="never">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="kveln">
+    <meta charset="utf-8" >
+
 <title>关于 | 惊躁</title>
-<link href="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-<!-- <link href="https://gzliuchaomin.github.io/media/css/bootstrap.min.css" rel="stylesheet"> -->
-<!--  <link href="https://gzliuchaomin.github.io/media/css/all.min.css" rel="stylesheet" type="text/css"> -->
-<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
-<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link rel="alternate" type="application/rss+xml" title="关于 | 惊躁 » Feed" href="https://gzliuchaomin.github.io/atom.xml">
-<link rel="stylesheet"href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/styles/androidstudio.min.css">
-<link href="https://gzliuchaomin.github.io/styles/main.css" rel="stylesheet">
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.15.10/build/highlight.min.js"></script>
-<!-- <script src="https://gzliuchaomin.github.io/media/scripts/jquery.min.js"></script> -->
-<script>hljs.initHighlightingOnLoad();</script>
+<meta name="description" content="惊躁中，平静下来吧">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://gzliuchaomin.github.io/favicon.ico?v=1620607316383">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://gzliuchaomin.github.io/styles/main.css">
 
 
-    <script src="/media/scripts/index.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
   </head>
   <body>
-    <div class="main">
-      <div class="main-content post-detail-page" id="detailTop">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand" href="https://gzliuchaomin.github.io">惊躁</a>
-    <div id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://gzliuchaomin.github.io">惊躁</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-        <li class="nav-item">
+          <li>
             
-            <a class="nav-link" href="/">文章</a>
+              <a href="/" class="menu">
+                作品
+              </a>
             
-        </li>
+          </li>
         
-        <li class="nav-item">
+          <li>
             
-            <a class="nav-link" href="/archives">归档</a>
+              <a href="/archives" class="menu">
+                归档
+              </a>
             
-        </li>
+          </li>
         
-        <li class="nav-item">
+          <li>
             
-            <a class="nav-link" href="/tags">标签</a>
+              <a href="/tags" class="menu">
+                标签
+              </a>
             
-        </li>
+          </li>
         
-        <li class="nav-item">
+          <li>
             
-            <a class="nav-link" href="/post/about">关于</a>
+              <a href="/post/xie-zuo/" class="menu">
+                写作
+              </a>
             
-        </li>
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
         
       </ul>
     </div>
   </div>
 </nav>
 
-        
-          <div class="post-feature-image has-feature-image" style="background-image: url('https://gzliuchaomin.github.io/post-images/about.JPG');">
-          </div>
-        
-        
-
-        <div id="postFixedNavs">
-
-          <a href="#detailTop" class="post-nav-item to-top">返回顶部</a>
-        </div>
-      
-        <div id="postContainer" class="post-detail">
-          <article class="post container">
-            <div class="post-title">
-              关于
-            </div>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-01-25 ·
-              </time>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>关于</h1>
+            <p class="article-meta">
+              2019-01-25
               
-            </div>
+            </p>
+            
+              <img src="https://gzliuchaomin.github.io/post-images/about.JPG" alt="关于">
             
             <div class="post-content">
-              <blockquote>
-<p>这是一个无趣的世界，这是一个有想的空间，愿净土在这边。</p>
-</blockquote>
-
-            </div>
-          </article>
-        </div>
-    
-        
-
-        
-    
-        <div class="site-footer">
+              <div id="dontShowMenu" />
+<div id="dontShowPostTitle"></div>
+<h2>关于我</h2>
+<div class="about-me container" style="display: flex;color:#424242;">
+  <style>div.ib{ display: inline-block}</style>
+  <div class="left ib" style="width: 60%;min-width: 300px;white-space: pre;">
+    🎓	UoE🇬🇧|SYSU🇨🇳
+    📍	现居于深圳
+    👩‍💻  产品 | 交互设计 
+    ✍️  我的简书 <a href="https://www.jianshu.com/u/137fde60023e">https://www.jianshu.com/u/137fde60023e</a>
+  </div>
+  <div class="ib" style="padding: 20px 40px;">
+    <style>a.pdf-link {width: 200px;border: 2px solid #6269FE;display: inline-block;text-align: center;padding: 10px;}a.pdf-link:hover {border: 2px solid #6269FE !important;background: #6269FE;text-decoration: none;color: #ffffff !important;}</style>
+    <a class="pdf-link" target="_blank" href="https://xiaoxinzz.github.io/post-images/resume.pdf">下载简历</a>
+  </div>
+</div>
+<hr>
+<h2>工作和实习经历</h2>
+<div class="jobs">
+  <style>.bi{display: inline-block;} .jobs .container {display: flex; margin-bottom: 50px;} .jobs .container .left{ width: 30%; min-width: 240px;line-height: 3rem;}.jobs .container .left strong{ color: #787878;font-size: 14px;} .jobs .job-type{display: block;color:#58C7F5;font-size: 12px;}.jobs .job-during{display: block;color:#888888;font-size: 12px;} .jobs .container .right{ flex: 1; color: #868686;font-size: 16px;}</style>
   <div class="container">
-    <!-- Powered by <a href="https://github.com/shatle" target="_blank">Shatle</a> -->
-    <div class="foot-box foot-box-1">
-      <div class="foot-box-title">联系我</div>
-
-      <div class="foot-box-content">
-        <br>
-        <p>邮箱：zhangxiaoxin63@qq.com</p>
-        <p>微信：-xxzhang-</p>
-        <br>
-        <p>Copyright @ 2021 xiaoxin zhang</p>
-      </div>
+    <div class="bi left">
+      <strong>京东</strong>
+      <span class="job-type">交互设计师</span>
+      <span class="job-during">2020.04-至今</span>
     </div>
-
-    <div class="foot-box foot-box-2">
-      <div class="foot-box-title">快捷链接</div>
-
-      <div class="foot-box-content">
-        <div class="qr-code-box">
-          <div class="qr-code-img" style="background-image: url('/media/images/qr-code.jpg');"></div>
-          <div class="qr-code-tip">扫描添加我微信</div>
-        </div>
-      </div>
+    <div class="bi right">
+      <p>wildlife adventure是为10-12岁的儿童设计的体验，通过增强现实的技术，该体验能够使孩子发现有关动物的新信息，并获得关于人类行为如何影响不同生态系统的崭新视角。</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="bi left">
+      <strong>网易互娱</strong>
+      <span class="job-type">游戏交互设计师</span>
+      <span class="job-during">2016.10-2017.07</span>
+    </div>
+    <div class="bi right">
+      <p>参与大唐无双手游的设计相关工作，理解需求，制作出游戏交互截面图，帮助玩家更好的与游戏互动。主要参与的模块有节日活动、战骑系统、红颜系统。</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="bi left">
+      <strong>网易互娱</strong>
+      <span class="job-type">交互设计师</span>
+      <span class="job-during">2016.10-2017.07</span>
+    </div>
+    <div class="bi right">
+      <p>负责内部网站的重新设计工作，理解产品需求，制作出不同层次的交互界面结构；与GUI沟通，协助完成页面视觉效果图。新版的网页精简步骤，75%的用户反馈用户体验明显提升，80%用户反馈提升了他们的工作效率。</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="bi left">
+      <strong>腾讯科技（广州）有限公司</strong>
+      <span class="job-type">产品运营</span>
+      <span class="job-during">2016.05-2016.10</span>
+    </div>
+    <div class="bi right">
+      <p>负责微信表情的审核、上架表情的管理；微信表情艺术家关系维护，挖掘和分析艺术家的需求；官方公众号的运营和官方邮箱的维护，跟踪新媒体平台推广效果。负责审核期间产出《常见审核反驳原因》</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="bi left">
+      <strong>京东</strong>
+      <span class="job-type">交互设计师</span>
+      <span class="job-during">2020.04-至今</span>
+    </div>
+    <div class="bi right">
+      <p>wildlife adventure是为10-12岁的儿童设计的体验，通过增强现实的技术，该体验能够使孩子发现有关动物的新信息，并获得关于人类行为如何影响不同生态系统的崭新视角。</p>
     </div>
   </div>
 </div>
+<div class="others container">
+  <style>.others{margin-top: 60px auto;font-size: 14px; color: #787878; display: flex;}.others .box{width: 33%; min-width: 240px;display: inline-block;line-height: 3rem !important;}.others .box h2 {margin-bottom: 20px;}.others .box p{margin-bottom: 0 !important;font-size: 14px !important;letter-spacing: normal !important;}</style>
+  <div class="box">
+    <h2>教育背景</h2>
+    <p><strong>中山大学 传播与设计学院</strong></p>
+    <p>网络与新媒体</p>
+    <p>优秀毕业生</p>
+    <p>2014.09-2018.06</p>
+  </div>
+  <div class="box">
+    <h2 style="padding: 12px 0;"></h2>
+    <p><strong>爱丁堡大学 爱丁堡艺术学院</strong></p>
+    <p>Msc Design and digital media</p>
+    <p>Graduate with Merits</p>
+    <p>2018.09-2019.11</p>
+  </div>
+  <div class="box">
+    <h2>奖项</h2>
+    <p>2014-2018 年度本科生奖学金</p>
+    <p>2018 中山大学优秀毕业生</p>
+    <p>2018 第十二届学生软件创新开发大赛三等奖</p>
+  </div>
+</div>
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+        </div>
+        
+      </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://gzliuchaomin.github.io/images/avatar.png?v=1620607316383" class="no-responsive avatar">
+    <div class="text-muted">惊躁中，平静下来吧</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">Gridea 与 github 配置快速指引</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/">既得利益者的快乐</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/">数据分页的逻辑和方法 - 阅读分享</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/ren-shi-sketch/">认识 Sketch</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/about-blog/">关于博客</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://gzliuchaomin.github.io/tag/OiBr18-0c/" class="badge secondary">
+          gridea
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/9stK7jJ3rB/" class="badge secondary">
+          github
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/nrnqd8awy/" class="badge success">
+          电影
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/7cjluLzyx/" class="badge secondary">
+          数据库
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/EnOflh3-Uv/" class="badge secondary">
+          sketch
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/RY59Pa1IAi/" class="badge warning">
+          blog
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/shatle" target="_blank">Shatle</a> | <a class="rss" href="https://gzliuchaomin.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
