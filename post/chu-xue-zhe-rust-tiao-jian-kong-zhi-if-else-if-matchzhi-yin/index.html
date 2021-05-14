@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>[初学者] Rust条件控制(if, else if, match)指引 | 惊躁</title>
+<meta name="description" content="惊躁中，平静下来吧">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://gzliuchaomin.github.io/favicon.ico?v=1621011796975">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://gzliuchaomin.github.io/styles/main.css">
+
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://gzliuchaomin.github.io">惊躁</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                作品
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/xie-zuo/" class="menu">
+                写作
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>[初学者] Rust条件控制(if, else if, match)指引</h1>
+            <p class="article-meta">
+              2020-12-08
+              
+            </p>
+            
+            <div class="post-content">
+              <blockquote>
+<p>https://www.koderhq.com/tutorial/rust/conditional-control/</p>
+</blockquote>
+<p>在这个课程中，我们将学习如何利用 if/else if/match 这些条件表达式来控制 Rust 程序中流程。</p>
+<p>我们还会学习在其它条件表达式中的内嵌条件表达式，包括利用 if 进行条件判断式的赋值操作。</p>
+<p>我们将在这课程学习以下内容</p>
+<ul>
+<li>什么是流程控制</li>
+<li>if 条件表达式</li>
+<li>怎么处理多条件判断</li>
+<li>else if 条件判断</li>
+<li>else 表达式</li>
+<li>怎么使用内嵌的 if/else if/else 表达式</li>
+<li>match 条件表达式</li>
+<li>条件判断赋值(if let)</li>
+<li>Rust 三元运算</li>
+<li>总结重点</li>
+</ul>
+<p>让我们开始吧</p>
+<h2 id="什么是流程控制">什么是流程控制</h2>
+<p>Rust 允许我们通过特定的表达式来执行条件，进而控制我们程序的流程。基于这些条件的结果，Rust 将会执行指定的代码块。</p>
+<p>举个例子，让我们来考虑这么一个应用：特定领域中的成员，在一个人员获取到进行这领域的权限时，他们需要提供下正确的认证信息。</p>
+<p>如果他们提供了正确的认证信息，他们就会被允许进入这区域。否则，他们将可以进行选择：再次尝试，或者当他们忘记密码时重置他们的密码。</p>
+<p>基于这些逻辑，我们可以想象出我们的代码，类似下方：</p>
+<pre><code class="language-bash">if username == db_username &amp;&amp; password == db_password
+  redirect to member area
+otherwise
+  if forgot_password
+    reset password
+  try_again
+</code></pre>
+<p>我们真正的代码并不会像和上面的完全一样，但它可以作为给你们展示条件控制的示例。</p>
+<p>控制我们程序流程的有下面的语句，可以结合比较和逻辑运算符进行操作。</p>
+<ul>
+<li>if</li>
+<li>else if</li>
+<li>else</li>
+<li>match</li>
+</ul>
+<h2 id="if-条件表达式">if 条件表达式</h2>
+<p>我们使用 if 语句来表示条件的执行，如果条件证明为正确的，编译器会执行 if 语句中的代码块。</p>
+<p>如果条件证明是错误的，编译器会移动到 if 语句后的代码块。</p>
+<p>if 语句通过 if 关键字来构建，后面接着的是我们想要执行的条件。</p>
+<p>然后，我们在大括号的里面指定代码块。在这代码块里，我们可以编写一个或者更多的表达式，如果条件被证明是正确的，代码块中的代码将会被执行。</p>
+<pre><code class="language-rust">if condition {
+    // code block to execute
+    // if condition proves true
+}
+</code></pre>
+<p>注意，如果一个语句没有用分号<code>;</code>进行结束，那么编译器会通过大括号的关闭符号来判断。</p>
+<pre><code class="language-rust">fn main() {
+    let a = 5;
+    if a &lt; 10 {
+        println(&quot;Evaluation proved true&quot;);
+    }
+}
+</code></pre>
+<p>在上面的例子中，我们的变量是小于10的，所以条件会证明是正确的。编译器会打印在 if 语句代码块的信息。</p>
+<p>当编译器执行完成 if 语句(代码块)时，它会移动到后面的任意代码。这与 if 语句为错误时类似，编译器会移动下 if 语句外部下面的代码。</p>
+<pre><code class="language-rust">fn main() {
+    let a = 5;
+    if a &gt; 10 {
+        println!(&quot;Execute only if the condition proves true&quot;);
+    }
+    println!(&quot;Code outside and below if statement&quot;);
+}
+</code></pre>
+<p>在上面的例子中，我们的 if  条件判断是错误的，编译器会移动到 if 语句下面的下一部分代码块中。</p>
+<h2 id="怎么处理多条件判断">怎么处理多条件判断</h2>
+<p>通过逻辑运算符 &amp;&amp; 和 || , 可以帮助我们在一个 if 条件中执行不止一个条件。“And” 可以用来判断一个条件和另外一个条件都是true，在执行代码之前，需要两个条件都证明为true。</p>
+<p>为了使用 And 来处理多个条件，我们使用 &amp;&amp; 操作符来分开两个条件。</p>
+<pre><code class="language-rust">if condition_1 &amp;&amp; condition_2 {
+    // code block to execute if both conditions prove true
+}
+</code></pre>
+<pre><code class="language-rust">fn main() {
+    let a = 5;
+    if a &gt; 0 &amp;&amp; a &lt; 10 {
+        println!(&quot;Both conditions are true);
+    }
+}
+</code></pre>
+<p>在上面的例子中，由于我们两个条件都是正确的，所以 if 代码块中的代码会被执行。</p>
+<p>&quot;OR&quot;  条件用来判断一个条件或者另外一个条件证明 true, 在执行代码之前，需要多个条件中至少有一个证明为true。</p>
+<p>为了处理在多条件中的 OR，我们使用  || 操作符来分隔两个条件。</p>
+<pre><code class="language-rust">if condition_1 || condition_2 {
+    // code block to execute if one condition or the other proves true
+}
+</code></pre>
+<pre><code class="language-rust">fn main() {
+    let a = 5;
+    if a &gt; 5 || a &lt; 10 {
+        println!(&quot;One of the conditions are true&quot;);
+    }
+}
+</code></pre>
+<p>在上面的例子中，第一个条件是false, 但第二条件是 true，所以编译器允许执行代码块中的代码。</p>
+<h2 id="else-if-条件判断">else if 条件判断</h2>
+<p>当我们需要多种判断条件但又不能整合到一个条件表达式中时，可以使用 else if 来组合更多的 if 条件。</p>
+<p>对于每一个 if 语句，当前一个 if  条件判断完成时，编译器会移动到下一个逐步处理的。</p>
+<p>编写 else if，也就是在 if 语句之前，增加 else 关键字。</p>
+<pre><code class="language-rust">if condition_1 {
+    //
+} else if condition_2 {
+    //
+}
+</code></pre>
+<pre><code class="language-rust">fn main() {
+    if false {
+        println!(&quot;Primary if statement&quot;);
+    } else if true {
+        println!(&quot;Secondary if statement&quot;);
+    }
+}
+</code></pre>
+<p>在上面的例子中，我们在第一个 if 表达式之后添加了第二个 if 表达式，中间使用 else 分隔。</p>
+<p>_注意：else if 不能独立于 if  语句而存在，第一个条件判断必须是 if _</p>
+<p>我们可以编写更多我们需要的 else if 语句。</p>
+<pre><code class="language-rust">fn main () {
+    if false {
+        println!(&quot;Primary if statement&quot;);
+    } else if false {
+        println!(&quot;Secondary if statement&quot;);
+    } else if true {
+        println!(&quot;Teritiary if statement&quot;);
+    }
+}
+</code></pre>
+<h2 id="else-表达式">else 表达式</h2>
+<p>else 表达式可以处理所有 if 和 else if 表达式未能覆盖到条件。</p>
+<p>因为它是“处理所有”的，所以它没有 条件判断语句，只有执行代码块。</p>
+<pre><code class="language-rust">if condition_1 {
+    // 
+} else {
+    //
+}
+</code></pre>
+<pre><code class="language-rust">fn main() {
+    let number = 5;
+    if number == 10 {
+        println!(&quot;if statement&quot;);
+    } else {
+        println!(&quot;catch all else callback&quot;);
+    }
+}
+</code></pre>
+<p>上面例子中，else 表达式会处理除了 number == 10 之外的结果，因为 number 不等于 10 ，所以编译器会执行 else 的代码块。</p>
+<h2 id="怎么使用内嵌的-ifelse-ifelse-表达式">怎么使用内嵌的 if/else if/else 表达式</h2>
+<h2 id="match-条件表达式">match 条件表达式</h2>
+<h2 id="条件判断赋值if-let">条件判断赋值(if let)</h2>
+<h2 id="rust-三元运算">Rust 三元运算</h2>
+<h2 id="总结重点">总结重点</h2>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/">
+                <h3 class="post-title">
+                  既得利益者的快乐
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://gzliuchaomin.github.io/images/avatar.png?v=1621011796975" class="no-responsive avatar">
+    <div class="text-muted">惊躁中，平静下来吧</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/mac-shang-an-zhuang-parallels-16/">Mac 上安装 Parallels 16</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">Gridea 与 github 配置快速指引</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/chu-xue-zhe-rust-tiao-jian-kong-zhi-if-else-if-matchzhi-yin/">[初学者] Rust条件控制(if, else if, match)指引</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/">既得利益者的快乐</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/">数据分页的逻辑和方法 - 阅读分享</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/ren-shi-sketch/">认识 Sketch</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://gzliuchaomin.github.io/post/about-blog/">关于博客</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://gzliuchaomin.github.io/tag/OiBr18-0c/" class="badge warning">
+          gridea
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/9stK7jJ3rB/" class="badge warning">
+          github
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/nrnqd8awy/" class="badge ">
+          电影
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/7cjluLzyx/" class="badge secondary">
+          数据库
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/EnOflh3-Uv/" class="badge success">
+          sketch
+        </a>
+      
+        <a href="https://gzliuchaomin.github.io/tag/RY59Pa1IAi/" class="badge success">
+          blog
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/gzliuchaomin" target="_blank">gzliuchaomin</a> | <a class="rss" href="https://gzliuchaomin.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+
+  </body>
+</html>

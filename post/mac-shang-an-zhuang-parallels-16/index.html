@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>文章归档 | 惊躁</title>
+<title>Mac 上安装 Parallels 16 | 惊躁</title>
 <meta name="description" content="惊躁中，平静下来吧">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -23,6 +23,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://gzliuchaomin.github.io">惊躁</a></h3>
@@ -84,130 +85,57 @@
   </div>
 </nav>
 
-    
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
-          
+          <article class="article">
+            <h1>Mac 上安装 Parallels 16</h1>
+            <p class="article-meta">
+              2021-05-15
+              
+            </p>
+            
+            <div class="post-content">
+              <p>最近收入一台macbook pro，简单记录一下过程，过程碰到了window10不能上网的问题，希望能帮助到后面的朋友。</p>
+<h2 id="一-下载安装好-parallels-16">一、下载安装好 parallels 16</h2>
+<h2 id="二-安装免激活的-window10">二、安装免激活的 window10</h2>
+<h2 id="三-修改配置文件">三、修改配置文件</h2>
+<p>打开 Terminal，按照图片输入</p>
+<figure data-type="image" tabindex="1"><img src="https://gzliuchaomin.github.io/post-images/1621010722257.jpg" alt="" loading="lazy"></figure>
+<pre><code>cd  /Library/Preferences/Parallels
+open .
+</code></pre>
+<p>会看到打开一下 Finder ，可以看到两个配置文件，网络相关的是 network 开头的</p>
+<figure data-type="image" tabindex="2"><img src="https://gzliuchaomin.github.io/post-images/1621011040940.jpg" alt="" loading="lazy"></figure>
+<p>可以用mac 自带的文本编辑器来操作，但由于权限会提示先复制出来，后续调整后再覆盖进原有位置。</p>
+<figure data-type="image" tabindex="3"><img src="https://gzliuchaomin.github.io/post-images/1621011132616.jpg" alt="" loading="lazy"></figure>
+<p>在这里，笔者建议使用 vs code 编辑器进行编辑，当保存时会提示不能保存，并提示输入密码进行保存</p>
+<figure data-type="image" tabindex="4"><img src="https://gzliuchaomin.github.io/post-images/1621011212282.jpg" alt="" loading="lazy"></figure>
+<p>为解决网络不能正常连接的问题，需要替换&quot;network.desktop.xml&quot;文件中的&quot;&lt;UseKextless&gt;1&lt;/UseKextless&gt;&quot;或者&quot;&lt;UseKextless&gt;-1&lt;/UseKextless&gt;&quot;，把这一行修改为&quot;&lt;UseKextless&gt;0&lt;/UseKextless&gt;&quot;并保存。</p>
+<p>如果不存在这个配置项，那么可以 “&lt;IPv6Enabled&gt;1&lt;/IPv6Enabled&gt;” 后面增加 “&lt;UseKextless&gt;0&lt;/UseKextless&gt;”，即可。笔者，就是属于这一情况。</p>
+<p>过程中，可能会要求安装 parallels 的系统插件，通过就可以。具体插件名称没有记录下来。</p>
+<p>然后，重新启动机器。</p>
 
-          <h2 class="archives-title">文章归档</h2>
-          <div class="archives-container">
-            
-              <h3 class="year" data-aos-delay="500">2021</h3>
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/mac-shang-an-zhuang-parallels-16/">
-                      <h4 class="post-title">
-                        Mac 上安装 Parallels 16
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">
-                      <h4 class="post-title">
-                        Gridea 与 github 配置快速指引
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-            
-              <h3 class="year" data-aos-delay="500">2020</h3>
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/chu-xue-zhe-rust-tiao-jian-kong-zhi-if-else-if-matchzhi-yin/">
-                      <h4 class="post-title">
-                        [初学者] Rust条件控制(if, else if, match)指引
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/ji-de-li-yi-zhe-de-kuai-le/">
-                      <h4 class="post-title">
-                        既得利益者的快乐
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/shu-ju-fen-ye-de-luo-ji-he-fang-fa-yue-du-fen-xiang/">
-                      <h4 class="post-title">
-                        数据分页的逻辑和方法 - 阅读分享
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/ren-shi-sketch/">
-                      <h4 class="post-title">
-                        认识 Sketch
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-                
-              
-            
-              <h3 class="year" data-aos-delay="500">2018</h3>
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-              
-                
-                  <article class="post">
-                    <a href="https://gzliuchaomin.github.io/post/about-blog/">
-                      <h4 class="post-title">
-                        关于博客
-                      </h4>
-                    </a>
-                  </article>
-                
-              
-            
-          </div>
+            </div>
+          </article>
         </div>
-        <div class="row flex-edges">
-  
-  
-</div>
-
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://gzliuchaomin.github.io/post/gridea-yu-github-pei-zhi-kuai-su-zhi-yin/">
+                <h3 class="post-title">
+                  Gridea 与 github 配置快速指引
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://gzliuchaomin.github.io/images/avatar.png?v=1621011796975" class="no-responsive avatar">
@@ -290,11 +218,11 @@
     </div>
     <div class="row">
       
-        <a href="https://gzliuchaomin.github.io/tag/OiBr18-0c/" class="badge secondary">
+        <a href="https://gzliuchaomin.github.io/tag/OiBr18-0c/" class="badge ">
           gridea
         </a>
       
-        <a href="https://gzliuchaomin.github.io/tag/9stK7jJ3rB/" class="badge success">
+        <a href="https://gzliuchaomin.github.io/tag/9stK7jJ3rB/" class="badge secondary">
           github
         </a>
       
@@ -306,11 +234,11 @@
           数据库
         </a>
       
-        <a href="https://gzliuchaomin.github.io/tag/EnOflh3-Uv/" class="badge secondary">
+        <a href="https://gzliuchaomin.github.io/tag/EnOflh3-Uv/" class="badge warning">
           sketch
         </a>
       
-        <a href="https://gzliuchaomin.github.io/tag/RY59Pa1IAi/" class="badge warning">
+        <a href="https://gzliuchaomin.github.io/tag/RY59Pa1IAi/" class="badge secondary">
           blog
         </a>
       
@@ -321,6 +249,8 @@
   </div>
 </div>
 
+
+    </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
