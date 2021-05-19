@@ -1,15 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://gzliuchaomin.github.io</id>
-    <title>惊躁</title>
-    <updated>2021-05-14T17:05:37.318Z</updated>
+    <title>炒面馆子</title>
+    <updated>2021-05-19T14:00:51.796Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://gzliuchaomin.github.io"/>
     <link rel="self" href="https://gzliuchaomin.github.io/atom.xml"/>
-    <subtitle>惊躁中，平静下来吧</subtitle>
+    <subtitle>本店只有炒面，出门左转有美食街</subtitle>
     <logo>https://gzliuchaomin.github.io/images/avatar.png</logo>
     <icon>https://gzliuchaomin.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2021, 惊躁</rights>
+    <rights>All rights reserved 2021, 炒面馆子</rights>
+    <entry>
+        <title type="html"><![CDATA[mac superset 本地构建全记录]]></title>
+        <id>https://gzliuchaomin.github.io/post/mac-superset-ben-di-gou-jian-quan-ji-lu/</id>
+        <link href="https://gzliuchaomin.github.io/post/mac-superset-ben-di-gou-jian-quan-ji-lu/">
+        </link>
+        <updated>2021-05-18T04:44:05.000Z</updated>
+        <content type="html"><![CDATA[<p>官网上有很多的指引，包括 docker 及多种工具的使用和安装</p>
+<blockquote>
+<p>https://superset.apache.org/docs/installation/installing-superset-using-docker-compose</p>
+</blockquote>
+<p>这里，笔者想在本地构建开发环境，打算长期跟进这一个开源项目。尝试了官网的多个指引之后，发现有多个问题，后找到了 github 上的指引</p>
+<blockquote>
+<p>https://github.com/apache/superset/blob/master/CONTRIBUTING.md#os-dependencies</p>
+</blockquote>
+<h2 id="一-下拉-github-代码">一、下拉 github 代码</h2>
+<h2 id="二-首先需要将本地的-python-指向-python3pip-升级使用-pip3">二、首先，需要将本地的 python 指向 python3，pip 升级使用 pip3</h2>
+<h2 id="三-服务端根据指引进行过程可能会出现很多问题需要一个个地解决">三、服务端：根据指引进行，过程可能会出现很多问题，需要一个个地解决</h2>
+<pre><code># Create a virtual environment and activate it (recommended)
+python3 -m venv venv # setup a python3 virtualenv
+source venv/bin/activate
+
+# Install external dependencies
+pip install -r requirements/local.txt
+
+# Install Superset in editable (development) mode
+pip install -e .
+
+# Create an admin user in your metadata database
+superset fab create-admin
+
+# Initialize the database
+superset db upgrade
+
+# Create default roles and permissions
+superset init
+
+# Load some data to play with (you must create an Admin user with the username `admin` for this command to work)
+superset load-examples
+
+# Start the Flask dev web server from inside your virtualenv.
+# Note that your page may not have css at this point.
+# See instructions below how to build the front-end assets.
+FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger
+
+Or you can install via our Makefile
+
+```bash
+# Create a virtual environment and activate it (recommended)
+$ python3 -m venv venv # setup a python3 virtualenv
+$ source venv/bin/activate
+
+# install pip packages + pre-commit
+$ make install
+
+# Install superset pip packages and setup env only
+$ make superset
+
+# Setup pre-commit only
+$ make pre-commit
+</code></pre>
+<p>使用 virtualenv 来引入独立的包管理，<br>
+其中， source venv/bin/activate 可以激活独立环境，退出使用 deactivate</p>
+<h4 id="在执行-pip-install-r-requirementslocaltxt-过程中出现问题">在执行 pip install -r requirements/local.txt 过程中，出现问题：</h4>
+<p>1、出现 pandas 版本要求在 1.2.2 版本，而镜像服务器中最高只有 1.1.5，<br>
+所以，需要手动下载 https://github.com/pandas-dev/pandas/releases</p>
+<p>在 ./superset/venv/lib/python3.7/site-packages 看到独立环境中的包，<br>
+一般来说，一个包包含两个目录，一个是库文件目录，一个是包说明目录。</p>
+<p>需要将 pandas 解压目录中的 pandas 和 pandas.egg-info （这个说明目录，最好按照版本重新命名） 复制到 ./superset/venv/lib/python3.7/site-packages 中。</p>
+<p>其中，需要将 pandas.egg-info 中的 PKG-INFO 文件，复制出文件 METADATA。</p>
+<p><em>另外，还为需要注意 pandas C 代码库的问题，后续会遇到</em></p>
+<h4 id="执行-superset-fab-create-admin-出现的问题">执行 superset fab create-admin 出现的问题：</h4>
+<p>1、安装 sasl 不成功</p>
+<p>有类似的报错</p>
+<pre><code>sh: line 1:  2207 Bus error: 10           /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -sdk macosx -find clang 2&gt; /dev/null
+    clang: error: unable to find utility &quot;clang&quot;, not a developer tool or in PATH
+    error: command 'clang' failed with exit status 72
+</code></pre>
+<p>查看版本 clang -v，有信息</p>
+<pre><code>You have not agreed to the Xcode license agreements. You must agree to both license agreements below in order to use Xcode.
+
+Press the 'return' key to view the license agreements at '/Applications/Xcode.app/Contents/Resources/English.lproj/License.rtf'
+</code></pre>
+<p>执行 xcodebuild -license， 并空格移动到最后，agree 就好。</p>
+<p>2、openssl 报错</p>
+<pre><code>ImportError: dlopen(/usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload/_ssl.cpython-37m-darwin.so, 2): Library not loaded: /usr/local/opt/openssl/lib/libssl.1.0.0.dylib
+  Referenced from: /usr/local/Cellar/python/3.7.0/Frameworks/Python.framework/Versions/3.7/lib/python3.7/lib-dynload/_ssl.cpython-37m-darwin.so
+  Reason: image not found
+
+ssl 报错
+</code></pre>
+<blockquote>
+<p>参考 https://stackoverflow.com/questions/59006602/dyld-library-not-loaded-usr-local-opt-openssl-lib-libssl-1-0-0-dylib</p>
+</blockquote>
+<pre><code>brew install rbenv/tap/openssl@1.0 
+ln -s /usr/local/Cellar/openssl@1.0/1.0.2t /usr/local/opt/openssl
+</code></pre>
+<p>3、pandas C 扩展库的问题</p>
+<pre><code>ImportError: C extension: No module named 'pandas._libs.interval' not built. If you want to import pandas from the source directory, you may need to run 'python setup.py build_ext --force' to build the C extensions first.
+</code></pre>
+<p>刚开始，笔者在原先下载的pandas 1.2.2 的包里，</p>
+<blockquote>
+<p>python3 -m venv venv<br>
+pip install numpy<br>
+...</p>
+</blockquote>
+<p>还依赖其它包</p>
+<pre><code>Package    Version
+---------- -------
+Cython     0.29.23
+numpy      1.18.1 # 开始版本是1.20
+pi         0.1.2
+pip        21.1.1
+setuptools 39.0.1
+</code></pre>
+<p>开始下载的numpy 是最新的1.20版本，运行 'python setup.py build_ext --force' ，生成新的库文件，并替换 superset 环境中的 panda 包的库文件。</p>
+<p>但，再次运行 出错</p>
+<pre><code>ValueError: numpy.ndarray size changed, may indicate binary incompatibility. Expected 88 from C header, got 80 from PyObject
+</code></pre>
+<p>参考链接有</p>
+<blockquote>
+<p>https://stackoverflow.com/questions/66060487/valueerror-numpy-ndarray-size-changed-may-indicate-binary-incompatibility-exp#answer-66743692</p>
+</blockquote>
+<p>基本意思是 运行时的 numpy 版本和 构建时的numpy版本不一致，特别是 版本 1.20 前后的代码有所区别。所以，笔者重新在下载解压panda包中，</p>
+<blockquote>
+<p>pip uninstall numpy  # 注意是在之前虚拟库环境中<br>
+pip install numpy==1.18.1<br>
+python setup.py build_ext --force # 再次构建</p>
+</blockquote>
+<p>重新构建出来的包，再次替换 superset 中的 panda 包。</p>
+<p>重新运行 superset fab create-admin，成功，并创建用户密码。</p>
+<p><em>另外，结合上面说法，可以查看 superset 下载的numpy包的版本，再下载相应的包进行 构建 panda 会更稳妥。</em></p>
+<h4 id="superset-load-examples-的问题">superset load-examples 的问题</h4>
+<p>1、</p>
+<pre><code>...
+ssl.SSLEOFError: EOF occurred in violation of protocol (_ssl.c:1045)
+</code></pre>
+<p>尝试重新安装 mac 的本地 postgresql，移动到公司网络就可以了</p>
+<p>最后运行</p>
+<blockquote>
+<p>FLASK_ENV=development superset run -p 8088 --with-threads --reload --debugger</p>
+</blockquote>
+<p>能正常运行</p>
+<h2 id="四-前端">四、前端</h2>
+<pre><code>cd superset-frontend
+nvm install --lts
+nvm use --lts
+npm install -g npm@7
+npm ci
+npm run dev-server
+</code></pre>
+<p>没有问题</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mac 上安装 Parallels 16]]></title>
         <id>https://gzliuchaomin.github.io/post/mac-shang-an-zhuang-parallels-16/</id>
